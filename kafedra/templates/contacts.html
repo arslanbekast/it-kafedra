@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block description %}{{ contacts_c.meta_d }}{% endblock %}
+{% block keywords %} {{ contacts_c.meta_k }}{% endblock %}
+{% block title %}{{ contacts_c.title }}{% endblock %}
+{% block content %}
+    <section class="contact_block">
+         {{ contacts_c.text|safe }}
+    </section>
+
+{% endblock %}

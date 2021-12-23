@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block description %}{{ news_c.meta_d }}{{ news_t.meta_d }}{% endblock %}
+{% block keywords %}{{ news_c.meta_k }}{{ news_t.meta_k }}{% endblock %}
+{% block title %}{{ news_c.title }}{{ news_t.title }}{% endblock %}
+{% block content %}
+            <section id="news_block">
+                {% if not news_t %}
+                {{ news_c.text|safe }}
+                {% for news in news_l %}
+                <div class="news">
+                <img src="/static/kafedra/img/news/news_{{ news.id }}/1.jpg" class="gl" alt="news"/>
+                <a href="/about/news/{{ news.id }}"><h3>{{ news.title|safe }}</h3></a>
+                <p>{{ news.text|safe|truncatewords:25 }} <a href="/about/news/{{ news.id }}">подробнее</a> </p>
+                </div>
+                {% endfor %}
+
+                {% if news_l.has_other_pages %}
+                <div class="pagination">
+                     <span class="links">
+                    {% if news_l.has_previous %}
+                        <a href="?page=1">Начало</a>
+                        <a href="?page={{ news_l.previous_page_number }}">&gt;&gt;&gt;</a>
+                    {% else %}
+                    <span class="nopage">Начало &lt;&lt;&lt;</span>
+                    {% endif %}
+
+                    <span>
+                        {{ news_l.number }} из {{ news_l.paginator.num_pages }}.
+                    </span>
+
+                    {% if collective.has_next %}
+                        <a href="?page={{ news_l.next_page_number }}">&lt;&lt;&lt;</a>
+                        <a href="?page={{ collective.paginator.num_pages }}">Конец</a>
+                    {% else %}
+                    <span class="nopage">Конец &gt;&gt;&gt;</span>
+                    {% endif %}
+                    </span>
+                </div>
+                {% endif %}
+
+                {% else %}
+                   {% if news_t %}
+                       <h3 class="big top">{{ news_t.title|safe }}</h3>
+                       {{ news_t.text|safe }}
+                       <span class="links"><a href="/about/news/">Перейти к списку новостей</a></span>
+                    {% endif %}
+                {% endif %}
+            </section>
+
+{% endblock %}

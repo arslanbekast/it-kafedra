@@ -1,0 +1,165 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="{% block description %}{{ home_c.meta_d }}{% endblock %}" />
+    <meta name="keywords" content="{% block keywords %}{{ home_c.meta_k }}{% endblock %}" />
+    <!--[if lt IE 9]><script src="/static/kafedra/js/html5.js"></script><![endif]-->
+    <script src="/static/kafedra/js/jquery-1.9.1.min.js"></script>
+    <script src="/static/kafedra/js/easing.js"></script>
+    <script src="/static/kafedra/js/jquery.ui.totop.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/kafedra/css/style.css" />
+    <link rel="shortcut icon" href="/static/kafedra/img/favicon.ico" type="image/x-icon" />
+    <title>{% block title %}{{ home_c.title }}{% endblock %}</title>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+/*
+    var defaults = {
+    containerID: 'toTop', // fading element id
+    containerHoverID: 'toTopHover', // fading element hover id
+    scrollSpeed: 1200,
+    easingType: 'linear'
+    };
+*/
+
+    $().UItoTop({ easingType: 'easeOutQuart', scrollSpeed: 800 });
+
+    });
+    </script>
+
+</head>
+<body>
+
+<div id="container">
+    <div id="head_container">
+        <!-- Шапка -->
+        <header id="header">
+            <section id="search_head">
+                 <form action="/search/" method="get">
+                     <input type="search" name="search" placeholder="поиск..." class="search" />
+                     <input type="submit" name="Go" value="Найти" class="submit" />
+                 </form>
+            </section>
+            <a href="/" title="На главную страницу"><img src="/static/kafedra/img/logo.png" alt="Кафедра Информационных технологий" /></a>
+        </header>
+        <!-- Навигация -->
+        <nav id="nav_block">
+            <ul id="nav">
+                <li><a href="/" {% if home %} class="focus" {% endif %}>Главная</a></li>
+                <li> <a href="#" onclick="return false" {% if dir %} class="focus" {% endif %}>Направления</a>
+                    <ul>
+                        <li><a href="/directions/pmi/" {% if pmi %} class="focus" {% endif %}>Прикладная математика и<br />информатика</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="return false" {% if ev %} class="focus" {% endif %}>События</a>
+                     <ul>
+                        <li><a href="/events/conferences/" {% if conf %} class="focus" {% endif %}>Конференции</a></li>
+                        <li><a href="/events/publications/" {% if publ %} class="focus" {% endif %}>Публикации</a>
+                            <ul>
+                                <li><a href="/events/publications/2013/" {% if year2013 %} class="focus" {% endif %}>2013 г.</a></li>
+                                <li><a href="/events/publications/2012/" {% if year2012 %} class="focus" {% endif %}>2012 г.</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="return false" {% if stud %} class="focus" {% endif %}>Студентам</a>
+                    <ul>
+                        <li><a href="/studentam/raspisanie/" {% if rasp %} class="focus" {% endif %}>Расписание занятий</a></li>
+                        <li><a href="/studentam/kursovye/" {% if kurs %} class="focus" {% endif %}>Тематика курсовых работ</a></li>
+                        <li><a href="/studentam/diplomnye/" {% if dipl %} class="focus" {% endif %}>Тематика дипломных работ</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="return false" {% if lab %} class="focus" {% endif %}>Лаборатории</a>
+                    <ul>
+                        <li><a href="/laboratories/innovations/" {% if innov %} class="focus" {% endif %}>Лаборатория инноваций</a></li>
+                        <li><a href="/laboratories/cisco/" {% if cisco %} class="focus" {% endif %}>Сетевая академия CISCO</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contacts/" {% if contact %} class="focus" {% endif %}>Контакты</a></li>
+                <li><a href="#" onclick="return false" {% if about %} class="focus" {% endif %}>О кафедре</a>
+                    <ul>
+                        <li><a href="/about/collective/" {% if col %} class="focus" {% endif %}>Коллектив</a></li>
+                        <li><a href="/about/news/" {% if news %} class="focus" {% endif %}>Новости</a></li>
+                        <li><a href="/about/info/" {% if info %} class="focus" {% endif %}>Информация</a></li>
+                    </ul>
+                </li>
+                <li><a href="/sitemap/" {% if sitemap %} class="focus" {% endif %}>Карта сайта</a></li>
+                <li><a href="/vypuskniki/gallery/" target="_blank" id="blink">*** ВЫПУСКНИКИ 2014 ***</a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div id="main">
+        <!-- Боковая панель -->
+        <aside id="right">
+            <section>
+            <p>Ссылки</p>
+            <ul class="block">
+                <li><a href="http://www.chesu.ru" target="_blank">Официальный сайт ЧГУ</a></li>
+                <li><a href="http://www.pk.chesu.ru" target="_blank">Приемная комиссия ЧГУ</a></li>
+                <li><a href="http://www.chgu.org" target="_blank">Личный кабинет</a></li>
+            </ul>
+            </section>
+            <section>
+                <p>Дата и время</p>
+               <div class="block clock"><object data="http://101widgets.com/_/00999901.swf" type="application/x-shockwave-flash" height="160" width="200"><param name="menu" value="false" /><param name="quality" value="high" /><param name="wmode" value="transparent" /></object></div>
+            </section>
+            <section>
+                <p>Погода</p>
+                <div class="block weather">
+
+                    <object type="application/x-shockwave-flash" data="http://swf.yowindow.com/yowidget3.swf" width="200" height="150">
+    	                <param name="movie" value="http://swf.yowindow.com/yowidget3.swf" />
+    	            <param name="allowfullscreen" value="true" />
+    	            <param name="wmode" value="opaque" />
+    	            <param name="bgcolor" value="#FFFFFF" />
+    	            <param name="flashvars" value="location_id=gn:558418&amp;location_name=%D0%93%D1%80%D0%BE%D0%B7%D0%BD%D1%8B%D0%B9&amp;landscape=airport&amp;time_format=24&amp;unit_system=metric&amp;lang=ru&amp;background=#FFFFFF&amp;copyright_bar=false"/>
+
+                    </object>
+                </div>
+            </section>
+            <section>
+                <p>Revolver map</p>
+               <div class="block revmap"><script type="text/javascript" src="http://ji.revolvermaps.com/2/1.js?i=804awuolomh&amp;s=200&amp;m=0&amp;v=true&amp;r=false&amp;b=000000&amp;n=false&amp;c=ff0000" async="async"></script></div>
+            </section>
+        </aside>
+
+        <!-- Контент -->
+        <article id="content">
+            {% block content %}
+            <section class="about">
+            {{ home_c.text|safe }}
+            </section>
+
+            <section id="#news_block">
+
+                <h1>Новости</h1>
+                {% for news in news_list %}
+                <div class="news">
+                <img src="/static/kafedra/img/news/news_{{ news.id }}/1.jpg" class="gl" />
+                <a href="/about/news/{{ news.id }}/"><h3>{{ news.title|safe }}</h3></a>
+                <p>{{ news.text|safe|truncatewords:25 }} <a href="/about/news/{{ news.id }}/">подробнее</a></p>
+                </div>
+                {% endfor %}
+
+            </section>
+            {% endblock %}
+        </article>
+
+        <!-- Подвал -->
+        <footer id="footer">
+
+                <p>{% now "Y" %} Кафедра информационных технологий ФМиКТ ЧГУ</p>
+                <p><b>E-mail: </b><a href="mailto:kafinfor@mail.ru">kafinfor@mail.ru</a></p>
+                <p>&copy; Все права защищены.</p>
+
+        </footer>
+
+    </div>
+
+</div>
+
+</body>
+</html>

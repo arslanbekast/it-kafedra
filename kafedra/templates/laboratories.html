@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block description %}{{ lab_c.meta_d }}{% endblock %}
+{% block keywords %}{{ lab_c.meta_k }}{% endblock %}
+{% block title %}{{ lab_c.title }}{% endblock %}
+{% block content %}
+    <section>
+         {{ lab_c.text|safe }}
+    </section>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block description %}{{ info_c.meta_d }}{% endblock %}
+{% block keywords %}{{ info_c.meta_k }}{% endblock %}
+{% block title %}{{ info_c.title }}{% endblock %}
+{% block content %}
+            <section class="about">
+                {{ info_c.text|safe }}
+            </section>
+{% endblock %}

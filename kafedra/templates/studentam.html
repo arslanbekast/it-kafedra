@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block description %}{{ stud_c.meta_d }}{% endblock %}
+{% block keywords %}{{ stud_c.meta_k }}{% endblock %}
+{% block title %}{{ stud_c.title }}{% endblock %}
+{% block content %}
+    <section>
+        {{ stud_c.text|safe }}
+    </section>
+{% endblock %}

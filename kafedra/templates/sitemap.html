@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block description %}{{ sitemap_c.meta_d }}{% endblock %}
+{% block keywords %}{{ sitemap_c.meta_k }}{% endblock %}
+{% block title %}{{ sitemap_c.title }}{% endblock %}
+{% block content %}
+    <section class="sitemap">
+         {{ sitemap_c.text|safe }}
+    </section>
+{% endblock %}

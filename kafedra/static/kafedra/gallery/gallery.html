@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="{{ gallery_c.meta_d }}" />
+    <meta name="keywords" content="{{ gallery_c.meta_k }}" />
+    <link rel="stylesheet" type="text/css" media="all" href="/static/kafedra/gallery/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/static/kafedra/gallery/css/jgallery.min.css" />
+    <link rel="shortcut icon" href="/static/kafedra/img/favicon.ico" type="image/x-icon" />
+    <title>{{ gallery_c.title }}</title>
+    <script type="text/javascript" src="/static/kafedra/gallery/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/static/kafedra/gallery/js/tinycolor-0.9.16.min.js"></script>
+    <script type="text/javascript" src="/static/kafedra/gallery/js/jgallery.min.js"></script>
+    <script type="text/javascript">
+   $( function(){
+    $( "#gallery" ).jGallery( {
+        "transition":"random",
+        "transitionCols":"1",
+        "transitionRows":"5",
+        "thumbnailsPosition":"bottom",
+        "thumbType":"image",
+        "backgroundColor":"000000",
+        "textColor":"FFFFFF",
+        "mode":"full-screen"
+    } );
+} );
+    </script>
+</head>
+<body style="padding: 40px; color: #fff; background: #011D29;">
+   <!-- <div id="gallery">
+     <div class="album" data-jgallery-album-title="Выпускники 2014">
+            <h1>Выпускники 2014</h1>
+            {% for file in files %}
+                <div class="photo">
+                <a href="/static/kafedra/gallery/img/large/{{ file }}">
+                    <img src="/static/kafedra/gallery/img/small/{{ file }}" alt="Группа Б1 и Б2"  data-jgallery-bg-color="#0C1523" data-jgallery-text-color="#fff" style="min-width: 250px; min-height: 250px"/></a>
+                </div>
+            {% endfor %}
+        </div>
+        
+    </div>-->
+
+      <table align="center" style="text-align: center;">
+          <tr>
+              <td>
+                  <img src="/static/kafedra/gallery/img/copyright.png" />
+              </td>
+          </tr>
+      </table>
+
+</body>
+</html>

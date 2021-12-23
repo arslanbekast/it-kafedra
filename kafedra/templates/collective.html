@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block description %}{{ col_c.meta_d }}{% endblock %}
+{% block keywords %}{{ col_c.meta_k }}{% endblock %}
+{% block title %}{{ col_c.title }}{% endblock %}
+{% block content %}
+    <section>
+        {{ col_c.text|safe }}
+        {% for col in collective %}
+        <div class="col">
+            <img src="/static/kafedra/img/{{ col.image }}" alt="Фото" />
+            <p class="big">{{ col.name }}</p>
+            <p>{{ col.position }}</p>
+        </div>
+        {% endfor %}
+        <div class="pagination">
+            <span class="links">
+                {% if collective.has_previous %}
+                    <a href="?page=1">Начало</a>
+                    <a href="?page={{ collective.previous_page_number }}">&lt;&lt;&lt;</a>
+                {% else %}
+                    <span class="nopage">Начало &lt;&lt;&lt;</span>
+                {% endif %}
+                <span>
+                    {{ collective.number }} из {{ collective.paginator.num_pages }}
+                </span>
+                {% if collective.has_next %}
+                    <a href="?page={{ collective.next_page_number }}">&gt;&gt;&gt;</a>
+                    <a href="?page={{ collective.paginator.num_pages }}">Конец</a>
+                {% else %}
+                    <span class="nopage">Конец &gt;&gt;&gt;</span>
+                {% endif %}
+            </span>
+        </div>
+    </section>
+{% endblock %}

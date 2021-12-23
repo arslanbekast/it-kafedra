@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block description %}{{ events_c.meta_d }}{% endblock %}
+{% block keywords %}{{ events_c.meta_k }}{% endblock %}
+{% block title %}{{ events_c.title }}{% endblock %}
+{% block content %}
+    <section>
+        {{ events_c.text|safe }}
+        {% if conf %}
+        <table>
+            <tr>
+                <th>Ф.И.О.</th><th>Описание</th><th>Место и время проведения</th>
+            </tr>
+            {% for conference in conferences %}
+                <tr>
+                    <td><span class="nowrap">{{ conference.name }}</span></td>
+                    <td>{{ conference.desc }}</td>
+                    <td>{{ conference.place_date }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        {% if publ and not year2012 and not year2013  %}
+            <ul class="links">
+                <li><a href="/events/publications/2013/">Публикации за 2013</a></li>
+                <li><a href="/events/publications/2012/">Публикации за 2012</a></li>
+            </ul>
+        {% endif %}
+            {% if year2013 %}
+            <h2>Публикации за 2013 год. </h2>
+            <table>
+                <tr><th colspan="5" class="big">Монографии</th></tr>
+                <tr>
+                    <th>Ф.И.О.</th><th>Название работы</th><th>Издательство</th><th>Объем в п.л.</th><th>Тираж</th>
+                </tr>
+                {% for public_m_2013 in public_m_2013 %}
+                <tr>
+                    <td>{{ public_m_2013.names }}</td>
+                    <td>{{ public_m_2013.work_name}}</td>
+                    <td>{{ public_m_2013.publisher }}</td>
+                    <td>{{ public_m_2013.volume }}</td>
+                    <td>{{ public_m_2013.circulation }}</td>
+                </tr>
+                {% endfor %}
+                <tr><th colspan="5" class="big">Статьи в реферируемых ВАК изданиях</th></tr>
+                <tr>
+                    <th>Ф.И.О.</th><th>Название работы</th><th>Журнал</th><th>Место издания</th><th>Страницы</th>
+                </tr>
+                {% for public_sr_2013 in public_sr_2013 %}
+                <tr>
+                    <td>{{ public_sr_2013.names }}</td>
+                    <td>{{ public_sr_2013.work_name }}</td>
+                    <td>{{ public_sr_2013.magazine }}</td>
+                    <td>{{ public_sr_2013.edition_place }}</td>
+                    <td>{{ public_sr_2013.pages }}</td>
+                </tr>
+                {% endfor %}
+                <tr><th colspan="5" class="big">Статьи и тезисы докладов</th></tr>
+                <tr>
+                    <th>Ф.И.О.</th><th>Название работы</th><th>Журнал/Сборник</th><th>Место издания</th><th>Страницы</th>
+                </tr>
+                {% for public_st_2013 in public_st_2013 %}
+                <tr>
+                    <td>{{ public_st_2013.names }}</td>
+                    <td>{{ public_st_2013.work_name }}</td>
+                    <td>{{ public_st_2013.magazine }}</td>
+                    <td>{{ public_st_2013.edition_place }}</td>
+                    <td>{{ public_st_2013.pages }}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+            {% endif %}
+            {% if year2012 %}
+            <h2>Публикации за 2012 год. </h2>
+            <table>
+                <tr><th colspan="5" class="big">Статьи в реферируемых ВАК изданиях</th></tr>
+                <tr>
+                    <th>Ф.И.О.</th><th>Название работы</th><th>Журнал</th><th>Место издания</th><th>Страницы</th>
+                </tr>
+                {% for public_sr_2012 in public_sr_2012 %}
+                <tr>
+                    <td>{{ public_sr_2012.names }}</td>
+                    <td>{{ public_sr_2012.work_name }}</td>
+                    <td>{{ public_sr_2012.magazine }}</td>
+                    <td>{{ public_sr_2012.edition_place }}</td>
+                    <td>{{ public_sr_2012.pages }}</td>
+                </tr>
+                {% endfor %}
+                <tr><th colspan="5" class="big">Статьи и тезисы докладов</th></tr>
+                <tr>
+                    <th>Ф.И.О.</th><th>Название работы</th><th>Журнал/Сборник</th><th>Место издания</th><th>Страницы</th>
+                </tr>
+                {% for public_st_2012 in public_st_2012 %}
+                <tr>
+                    <td>{{ public_st_2012.names}}</td>
+                    <td>{{ public_st_2012.work_name }}</td>
+                    <td>{{ public_st_2012.magazine }}</td>
+                    <td>{{ public_st_2012.edition_place }}</td>
+                    <td>{{ public_st_2012.pages }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+
+
+    </section>
+{% endblock %}

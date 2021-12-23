@@ -1,0 +1,84 @@
+.jgallery .jgallery-thumbnails {
+    background: #111;
+    .transition( ~"background 0.2s, background-color 0.2s" );
+    position: absolute;
+    z-index: 3;
+    font-size: 0;
+    line-height: 0;
+  
+    &.hidden {
+        display: none;
+    }
+    
+    .jgallery-container {
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        .transition( ~"box-shadow 0.2s, -webkit-box-shadow 0.2s" );
+        position: absolute;
+        overflow: hidden;
+    }
+
+    .album {
+        display: none;
+
+        &.active {
+            display: inline;
+        }
+    }
+
+    a {
+        border-radius: .7em;
+        white-space: normal;
+        display: inline-block;
+
+        &:hover:not(.active) {
+            border-radius: 2px !important;
+
+            img {
+                border-radius: 2px !important;
+            }
+        }
+
+        img {
+            border-radius: .7em;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+    }
+
+    .prev,
+    .next {
+        font-size: 24px;
+        text-align: center;
+        background: #111;
+        opacity: 1;
+        .box-shadow( none );
+        cursor: pointer;
+        position: absolute;
+
+    }
+
+    .ico {
+        width: 40px;
+        height: 40px;
+        margin: -20px 0 0 -20px;
+        line-height: 40px;
+        color: #fff;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+    }
+
+    .jgallery-close {
+        opacity: 0;
+        display: none;
+    }
+
+    .change-album {
+        display: none;
+    }
+}

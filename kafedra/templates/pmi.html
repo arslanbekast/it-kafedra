@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block description %}{{ pmi_c.meta_k }}{% endblock %}
+{% block keywords %}{{ pmi_c.meta_d }}{% endblock %}
+{% block title %}{{ pmi_c.title }}{% endblock %}
+{% block content %}
+    <section>
+        {{ pmi_c.text|safe }}
+    </section>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}{% if search %}{{ search }} - {% endif  %}Поиск по сайту {% endblock %}
+{% block content %}
+    <section>
+         <h1>Поиск по сайту</h1>
+         <section id="search_block">
+         <form action="/search/" name="search_form" method="get">
+              <input type="search" name="search" placeholder="Введите поисковый запрос" value="{{ search }}" class="search" />
+              <input type="submit" name="go" value="Найти" class="submit" />
+         </form>
+         </section>
+         {% if error %}
+         <span class="error">{{ error }}</span><br />
+         {% endif %}
+         {% if result %}
+         <h2>Найдено  результатов {{ result }}.</h2>
+         {% for content in content %}
+             <div class="links">
+             <a href="{{ content.url }}"><h4>{{ content.title }}</h4></a>
+             </div>
+         {% endfor %}
+         {% for news in news_s %}
+             <div class="links">
+             <a href="/about/news/{{ news.id }}/"><h4>{{ news.title|safe }}</h4></a>
+             </div>
+         {% endfor %}
+         {% for conference in conferences %}
+             <div class="links">
+             <a href="/events/conferences/"><h4>{{ conference.desc|truncatewords:10}}</h4></a>
+             </div>
+         {% endfor %}
+         {% for publication in publications %}
+             <div class="links">
+             <a href="/events/publications/{{ publication.year }}"
+                ><h4>{{ publication.section }} - {{ publication.work_name|truncatewords:10 }}</h4></a>
+             </div>
+         {% endfor %}
+         {% for collective in collective %}
+             <div class="links">
+             <a href="/about/collective/"><h4>{{ collective.name }} - {{ collective.position }}</h4></a>
+             </div>
+         {% endfor %}
+         {% endif %}
+
+
+    </section>
+{% endblock %}
